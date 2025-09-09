@@ -57,4 +57,4 @@ const getTheaters = async (req, res) => {
   }
 };
 
-module.exports = getTheaters ;
+module.exports = getTheaters;
