@@ -20,6 +20,7 @@ connectDB();
 
 // Routes
 app.use("/auth", require("./routes/auth.routes"));
+app.use("/theater", require("./routes/theater.routes"));
 
 // Listen on
 listenPort(app);

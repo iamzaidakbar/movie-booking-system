@@ -29,8 +29,8 @@ const register = async (req, res) => {
       name,
       email,
       password: hash,
-      role: user.role,
-    }); // ✅ password field
+      role: role, // use provided role if valid, else model default applies
+    });
 
     const token = generateToken(user._id);
 
