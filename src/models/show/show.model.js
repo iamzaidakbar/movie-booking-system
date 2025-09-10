@@ -43,7 +43,7 @@ const ShowSchema = new mongoose.Schema(
     },
     // Added duration to calculate end time
     movieDuration: {
-      type: String,
+      type: Number, // in minutes
       required: true,
     },
     // Changed from showTime to startTime for clarity

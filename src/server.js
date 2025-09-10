@@ -25,6 +25,9 @@ app.use("/screen", require("./routes/screen.routes"));
 app.use("/movie", require("./routes/movie.routes"));
 app.use("/show", require("./routes/show.routes"));
 
+// Cron jobs
+require("./cron/showStatus.cron");
+
 // Listen on
 listenPort(app);
 
