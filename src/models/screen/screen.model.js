@@ -30,6 +30,11 @@ const ScreenSchema = new mongoose.Schema(
       type: [mongoose.Schema.Types.Mixed],
       default: [],
     },
+    slots: {
+      type: [mongoose.Schema.Types.Mixed],
+      default: [],
+      required: true,
+    },
   },
   {
     timestamps: true,

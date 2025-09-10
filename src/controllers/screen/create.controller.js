@@ -4,12 +4,13 @@ const generateSeats = require("../../utils/generateSeats");
 
 const createScreen = async (req, res) => {
   try {
-    const { theaterId, name, rows, cols } = req.body;
+    const { theaterId, name, rows, cols, slots } = req.body;
 
     // validate request body
-    if (!theaterId || !name || !rows || !cols) {
+    if (!theaterId || !name || !rows || !cols || !slots) {
       return res.status(400).json({
-        message: "( theaterId, name, rows and cols ) All fields are required!",
+        message:
+          "( theaterId, name, rows, cols and slots ) All fields are required!",
       });
     }
 
@@ -49,6 +50,7 @@ const createScreen = async (req, res) => {
       name: name.trim(),
       seats,
       totalSeats,
+      slots,
     });
 
     // Populate theater details for response
