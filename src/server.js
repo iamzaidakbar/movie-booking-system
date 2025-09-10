@@ -23,6 +23,7 @@ app.use("/auth", require("./routes/auth.routes"));
 app.use("/theater", require("./routes/theater.routes"));
 app.use("/screen", require("./routes/screen.routes"));
 app.use("/movie", require("./routes/movie.routes"));
+app.use("/show", require("./routes/show.routes"));
 
 // Listen on
 listenPort(app);
