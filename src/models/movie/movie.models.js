@@ -6,6 +6,7 @@ const MovieSchema = new mongoose.Schema(
       type: String,
       required: true,
       trim: true,
+      unique: true,
     },
     posterUrl: {
       type: String,
@@ -51,6 +52,7 @@ const MovieSchema = new mongoose.Schema(
       score: { type: Number, required: true },
       votes: { type: Number, required: true },
     },
+    isUpcoming: { type: Boolean, default: false },
   },
   { timestamps: true }
 );

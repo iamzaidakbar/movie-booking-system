@@ -1,5 +1,4 @@
 const Movie = require("../../models/movie/movie.models");
-const { parse, format } = require("date-fns");
 
 const addMovie = async (req, res) => {
   const {
@@ -15,6 +14,7 @@ const addMovie = async (req, res) => {
     certification,
     releaseDate,
     rating: { score, votes },
+    isUpcoming,
   } = req.body;
 
   if (
@@ -44,8 +44,6 @@ const addMovie = async (req, res) => {
   }
 
   try {
-    const parsedDate = parse(releaseDate, "d MMM, yyyy", new Date());
-
     const newMovie = new Movie({
       title,
       posterUrl,
@@ -57,8 +55,9 @@ const addMovie = async (req, res) => {
       language,
       format: movieFormat,
       certification,
-      releaseDate: parsedDate,
+      releaseDate,
       rating: { score, votes },
+      isUpcoming,
     });
 
     await newMovie.save();
@@ -66,14 +65,13 @@ const addMovie = async (req, res) => {
     // Send response with formatted releaseDate
     res.status(201).json({
       message: "Movie added successfully.",
-      movie: {
-        ...newMovie._doc,
-        releaseDate: format(newMovie.releaseDate, "d MMM, yyyy"),
-      },
+      movie: newMovie,
     });
   } catch (error) {
     console.error("Error adding movie:", error);
-    res.status(500).json({ message: "Internal server error." });
+    res
+      .status(500)
+      .json({ message: "Internal server error.", error: error.message });
   }
 };
 
