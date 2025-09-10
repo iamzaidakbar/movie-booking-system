@@ -8,6 +8,13 @@ const ScreenSchema = new mongoose.Schema(
       required: true,
       index: true,
     },
+    theaterName: {
+      type: String,
+      required: true,
+      trim: true,
+      minlength: 1,
+      maxlength: 100,
+    },
     name: {
       type: String,
       required: true,
